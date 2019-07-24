@@ -1,0 +1,63 @@
+body{
+    background:sky-blue;
+  }
+  .canvas{
+    background-color:black;
+    width:320px;
+    margin:40px auto;
+    border-radius:10px;
+    padding:10px;
+    padding-bottom:20px;
+    box-shadow: inset 2px 2px 0px rgba(255,255,255,0.2), 1px 1px 0px rgba(255,255,255,0.5);
+    
+  }
+  #screen{
+    background-color:lightgreen;
+    margin:20px 10px 20px 10px;
+    padding:5px;
+    padding-right:10px;
+    text-align:right;
+    min-height:45px;
+    font-size:35px;
+    box-shadow: inset 2px 2px 0px rgba(0,0,0,0.5), 1px 1px 0px rgba(255,255,255,0.5);
+    font-family: 'VT323', monospace;
+  }
+  #screen{
+    text-allign:right;
+    border-radius : 3px;
+  }
+  button{
+    width:65px;
+    height:50px;
+    background-color:lightgrey;
+    border-radius:3px;
+  }
+  .line{
+    padding-bottom:10px;
+    padding-left:12.5px;
+  }
+  #clear{
+    background-color:red;
+    color:white;
+    border:solid;
+    border-width:2px;
+    border-style:inset;
+    border-color:black;
+    border-top-color:rgba(255,150,150,.5);
+    border-left-color:rgba(255,150,150,.5);
+    border-bottom-style:solid;
+    border-bottom-color:rgba(100,0,0);
+    border-right-style:solid;
+    border-right-color:rgba(100,0,0);
+    
+  }
+  #clea{
+    background-color:red;
+    color:white;
+    border:inset;
+    border-color: rgba(50,50,50,0.5), 2px 1px 0px rgba(255,0,0,0.5);
+    
+    box-shadow: inset 1px 1px 0px rgba(100,100,100,0.5);
+    -moz-box-shadow: inset 1px 1px 0px rgba(100,100,100,0.5);
+  }
+  
