@@ -1,0 +1,126 @@
+<!DOCTYPE HTML>
+<!--
+	Massively by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+
+<head>
+    <title>Calculator</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <link rel="stylesheet" href="assets/css/calculator.css" />
+    <noscript>
+        <link rel="stylesheet" href="assets/css/noscript.css" />
+    </noscript>
+    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P|VT323" rel="stylesheet">
+
+</head>
+
+<body class="is-preload">
+
+    <!-- Wrapper -->
+    <div id="wrapper">
+
+        <!-- Header -->
+        <header id="header">
+            <a href="index.html" class="logo">Calculator Project</a>
+        </header>
+
+        <!-- Nav -->
+        <nav id="nav">
+            <ul class="links">
+                <li>
+                    <a href="index.html">Home</a>
+                </li>
+            </ul>
+            <ul class="icons">
+                <li>
+                    <a href="https://www.linkedin.com/in/cristian-s%C3%A1nchez-439244139/" target="_blank" class="icon brands fa-linkedin">
+                        <span class="label">LinkedIn</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://github.com/cris-pr" target="_blank" class="icon brands fa-github">
+                        <span class="label">GitHub</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Main -->
+        <div id="main">
+
+            <!-- Post -->
+            <section class="post">
+                <link href="https://fonts.googleapis.com/css?family=Press+Start+2P|VT323" rel="stylesheet">
+                <div class="canvas">
+                    <div>
+                        <div id="screen">0.</div>
+                    </div>
+                    <div class="line">
+                        <button id="clear" onclick="clrScreen()">C</button>
+                        <button id="parenth">()</button>
+                        <button id="percent">%</button>
+                        <button id="divide" onclick="pushOp('/')">/</button>
+                    </div>
+                    <div class="line">
+                        <button id="seven" onclick="addNumber('seven')">7</button>
+                        <button id="eight" onclick="addNumber('eight')">8</button>
+                        <button id="nine" onclick="addNumber('nine')">9</button>
+                        <button id="mult" onclick="pushOp('x')">x</button>
+                    </div>
+                    <div class="line">
+                        <button id="four" onclick="addNumber('four')">4</button>
+                        <button id="five" onclick="addNumber('five')">5</button>
+                        <button id="six" onclick="addNumber('six')">6</button>
+                        <button id="sub" onclick="pushOp('-')">-</button>
+                    </div>
+                    <div class="line">
+                        <button id="one" onclick="addNumber('one')">1</button>
+                        <button id="two" onclick="addNumber('two')">2</button>
+                        <button id="three" onclick="addNumber('three')">3</button>
+                        <button id="plus" onclick="pushOp('+')">+</button>
+                    </div>
+                    <div class="line">
+                        <button id="plusmin">+/-</button>
+                        <button id="zero" onclick="addNumber('zero')">0</button>
+                        <button id="point">.</button>
+                        <button id="equal" onclick="pushOp('=')">=</button>
+                    </div>
+                </div>
+
+            </section>
+
+        </div>
+
+
+
+        <!-- Copyright -->
+        <div id="copyright">
+            <ul>
+                <li>&copy; Cristian Sanchez</li>
+                <li>Background Photo by Greg Rakozy on Unsplash</li>
+                <li>Design:
+                    <a href="https://html5up.net">HTML5 UP</a>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+
+    <!-- Scripts -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/jquery.scrollex.min.js"></script>
+    <script src="assets/js/jquery.scrolly.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/calculator.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE HTML>
+<!--
+	Massively by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Tic Tac Toe</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" href="assets/css/tictactoe.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		<link href="https://fonts.googleapis.com/css?family=Press+Start+2P|VT323" rel="stylesheet">
+
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<a href="index.html" class="logo">Tic Tac Toe Project</a>
+					</header>
+
+				<!-- Nav -->
+					<nav id="nav">
+						<ul class="links">
+							<li><a href="index.html">Home</a></li>
+						</ul>
+						<ul class="icons">
+								<li><a href="https://www.linkedin.com/in/cristian-s%C3%A1nchez-439244139/" target = "_blank" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
+								<li><a href="https://github.com/cris-pr" target = "_blank" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+							</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Post -->
+							<section class="post">
+									<h1 id="title">Tic Tac Toe</h1>
+									<div id="white-background">
+									</div>
+									<div id="dlgbox" class = "vertical-center">
+										<div id="dlg-body" class = "vertical-center">
+											<h3 class="menu-text">Choose Player 1's Symbol</h3>
+											<button class="square2" id="chooseX" onclick="chooseSym('X')">X</button>
+											<button class="square2" id="chooseO" onclick="chooseSym('O')">O</button>
+											<h3 class="menu-text">Choose Game Mode</h3>
+											<button class="square2" id="choose-1player" onclick="click1p()">1 Player</button>
+											<button class="square2" id="choose-2player" onclick="click2p()">2 Players</button>
+										</div>
+									</div>
+									<div class="grid">
+										<button class="square" id="s0" onclick="playerTurn('s0')"></button>
+										<button class="square" id="s1" onclick="playerTurn('s1')"> </button>
+										<button class="square" id="s2" onclick="playerTurn('s2')"> </button>
+								
+										<button class="square" id="s3" onclick="playerTurn('s3')"></button>
+										<button class="square" id="s4" onclick="playerTurn('s4')"></button>
+										<button class="square" id="s5" onclick="playerTurn('s5')"></button>
+								
+										<button class="square" id="s6" onclick="playerTurn('s6')"></button>
+										<button class="square" id="s7" onclick="playerTurn('s7')"></button>
+										<button class="square" id="s8" onclick="playerTurn('s8')"></button>
+										<button class="menu-button" onclick="showDialog()">Settings</button>
+										<button class="menu-button" onclick="start()">Restart</button>
+										<button class="square" id="showTurn"></button>
+									</div>
+								
+									<div>
+								
+									</div>
+								
+							</section>
+
+					</div>
+
+			
+
+				<!-- Copyright -->
+					<div id="copyright">
+						<ul><li>&copy; Cristian Sanchez</li><li>Background Photo by Greg Rakozy on Unsplash</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li></ul>
+					</div>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+			<script src="assets/js/tictactoe.js"></script>
+
+	</body>
+</html>
