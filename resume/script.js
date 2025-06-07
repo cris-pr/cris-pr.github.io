@@ -22,7 +22,7 @@
         );
     });
 
-  $(".skills-soft li")
+  $(".skills-soft li .circle")
     .find("svg")
     .each(function(i) {
       var c, cbar, circle, percent, r;
