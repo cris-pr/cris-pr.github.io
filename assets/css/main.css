@@ -2590,7 +2590,6 @@ input[type="radio"]:focus + label:before {
 
 .image {
 	border: 0;
-	display: inline-block;
 	position: relative;
 }
 
@@ -2619,9 +2618,11 @@ input[type="radio"]:focus + label:before {
 	}
 
 	.image.fit {
-		display: block;
+		display: flex;
 		margin: 2.5rem 0;
 		width: 100%;
+		justify-content: center;
+  		align-items: center;
 	}
 
 		.image.fit:first-child {
@@ -2630,6 +2631,8 @@ input[type="radio"]:focus + label:before {
 
 		.image.fit img {
 			width: 100%;
+			height: auto;
+			max-height: 300px;
 		}
 
 	.image.main {
