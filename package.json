@@ -1,0 +1,43 @@
+{
+  "name": "cris-pr-portfolio",
+  "version": "1.0.0",
+  "description": "Cristian Sanchez Vazquez portfolio site built with Vite, React, TypeScript, and Tailwind CSS.",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cris-pr/cris-pr.github.io.git"
+  },
+  "keywords": [
+    "portfolio",
+    "react",
+    "typescript",
+    "vite",
+    "tailwindcss"
+  ],
+  "author": "Cristian Sanchez Vazquez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cris-pr/cris-pr.github.io/issues"
+  },
+  "homepage": "https://github.com/cris-pr/cris-pr.github.io#readme",
+  "dependencies": {
+    "lucide-react": "^1.18.0",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.3.1",
+    "@types/react": "^19.2.17",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^6.0.2",
+    "tailwindcss": "^4.3.1",
+    "typescript": "^6.0.3",
+    "vite": "^8.0.16"
+  }
+}

@@ -1,0 +1,76 @@
+import type { Language } from "../data/portfolio";
+
+type HeaderProps = {
+  language: Language;
+  onLanguageChange: (language: Language) => void;
+  navItems: {
+    label: string;
+    href: string;
+  }[];
+  links: {
+    label: string;
+    href: string;
+  }[];
+  profileName: string;
+  languageToggle: {
+    label: string;
+    ariaLabel: string;
+  };
+};
+
+export function Header({
+  language,
+  onLanguageChange,
+  navItems,
+  links,
+  profileName,
+  languageToggle,
+}: HeaderProps) {
+  const nextLanguage: Language = language === "en" ? "es" : "en";
+
+  return (
+    <header className="site-header sticky top-0 z-50 border-b border-white/10 bg-slate-950/80 backdrop-blur-xl">
+      <nav
+        className="site-navigation mx-auto flex max-w-6xl items-center justify-between px-6 py-4"
+        aria-label="Main navigation"
+      >
+        <a href="#top" className="brand-link group flex items-center gap-3">
+          <span className="brand-mark flex h-10 w-10 items-center justify-center rounded-2xl border border-cyan-300/40 bg-cyan-300/10 text-sm font-bold text-cyan-200 shadow-lg shadow-cyan-950/40">
+            CS
+          </span>
+          <span className="brand-name hidden text-sm font-semibold text-white sm:block">{profileName}</span>
+        </a>
+
+        <div className="primary-nav-links hidden items-center gap-6 text-sm font-medium text-slate-300 md:flex">
+          {navItems.map((item) => (
+            <a key={item.href} href={item.href} className="primary-nav-link transition hover:text-cyan-200">
+              {item.label}
+            </a>
+          ))}
+        </div>
+
+        <div className="header-actions flex items-center gap-3">
+          {links.map((link) => (
+            <a
+              key={link.href}
+              href={link.href}
+              className="header-social-link rounded-full border border-white/10 px-3 py-2 text-xs font-bold uppercase tracking-[0.16em] text-slate-300 transition hover:border-cyan-300/60 hover:text-cyan-200"
+              target={link.href.startsWith("http") ? "_blank" : undefined}
+              rel={link.href.startsWith("http") ? "noreferrer" : undefined}
+            >
+              {link.label}
+            </a>
+          ))}
+          <button
+            type="button"
+            className="language-toggle rounded-full border border-cyan-300/40 bg-cyan-300/10 px-3 py-2 text-xs font-bold uppercase tracking-[0.16em] text-cyan-100 transition hover:border-cyan-200 hover:bg-cyan-300/20"
+            onClick={() => onLanguageChange(nextLanguage)}
+            aria-label={languageToggle.ariaLabel}
+          >
+            {languageToggle.label}
+          </button>
+        </div>
+      </nav>
+    </header>
+  );
+}
