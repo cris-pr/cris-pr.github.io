@@ -1,5 +1,3 @@
-import { Github, Linkedin, Mail } from "lucide-react";
-
 import { links, profile } from "../data/portfolio";
 
 const navItems = [
@@ -9,12 +7,6 @@ const navItems = [
   { label: "Skills", href: "#skills" },
   { label: "Contact", href: "#contact" },
 ];
-
-const iconMap = {
-  GitHub: Github,
-  LinkedIn: Linkedin,
-  Email: Mail,
-};
 
 export function Header() {
   return (
@@ -36,22 +28,17 @@ export function Header() {
         </div>
 
         <div className="flex items-center gap-3">
-          {links.map((link) => {
-            const Icon = iconMap[link.label as keyof typeof iconMap];
-
-            return Icon ? (
-              <a
-                key={link.href}
-                href={link.href}
-                className="rounded-full border border-white/10 p-2 text-slate-300 transition hover:border-cyan-300/60 hover:text-cyan-200"
-                target={link.href.startsWith("http") ? "_blank" : undefined}
-                rel={link.href.startsWith("http") ? "noreferrer" : undefined}
-                aria-label={link.label}
-              >
-                <Icon className="h-4 w-4" aria-hidden="true" />
-              </a>
-            ) : null;
-          })}
+          {links.map((link) => (
+            <a
+              key={link.href}
+              href={link.href}
+              className="rounded-full border border-white/10 px-3 py-2 text-xs font-bold uppercase tracking-[0.16em] text-slate-300 transition hover:border-cyan-300/60 hover:text-cyan-200"
+              target={link.href.startsWith("http") ? "_blank" : undefined}
+              rel={link.href.startsWith("http") ? "noreferrer" : undefined}
+            >
+              {link.label}
+            </a>
+          ))}
         </div>
       </nav>
     </header>
