@@ -9,15 +9,25 @@ import {
   Sparkles,
 } from "lucide-react";
 
+import { CapabilityCard } from "./components/CapabilityCard";
 import { Header } from "./components/Header";
+import { CalculatorModal } from "./components/CalculatorModal";
+import { TicTacToeModal } from "./components/TicTacToeModal";
 import { ProjectCard } from "./components/ProjectCard";
 import { Section } from "./components/Section";
 import { type Language, portfolioContent } from "./data/portfolio";
 
 function App() {
   const [language, setLanguage] = useState<Language>("en");
+  const [showTicTacToe, setShowTicTacToe] = useState(false);
+  const [showCalculator, setShowCalculator] = useState(false);
+  const [showAllArchivedProjects, setShowAllArchivedProjects] = useState(false);
   const content = portfolioContent[language];
   const { profile } = content;
+  const visibleArchivedProjects = showAllArchivedProjects
+    ? content.projects.archived
+    : content.projects.archived.slice(0, 2);
+  const hasHiddenArchivedProjects = content.projects.archived.length > 2;
 
   useEffect(() => {
     document.documentElement.lang = language;
@@ -30,7 +40,7 @@ function App() {
   }, [content.meta.description, content.meta.title, language]);
 
   return (
-    <div id="top" className="portfolio-app min-h-screen overflow-hidden bg-slate-950 text-slate-100">
+    <div id="top" className="portfolio-app min-h-screen bg-slate-950 text-slate-100">
       <div className="background-effects pointer-events-none fixed inset-0 -z-10">
         <div className="background-orb background-orb--primary absolute left-1/2 top-0 h-[38rem] w-[38rem] -translate-x-1/2 rounded-full bg-cyan-500/15 blur-3xl" />
         <div className="background-orb background-orb--secondary absolute bottom-0 right-0 h-[32rem] w-[32rem] rounded-full bg-fuchsia-500/10 blur-3xl" />
@@ -46,7 +56,7 @@ function App() {
       />
 
       <main className="site-main">
-        <section className="hero-section relative px-6 pb-20 pt-16 sm:pb-28 sm:pt-24">
+        <section className="hero-section relative px-6 pb-16 pt-8 sm:pb-28 sm:pt-16">
           <div className="hero-container mx-auto grid max-w-6xl items-center gap-12 lg:grid-cols-[1.1fr_0.9fr]">
             <div className="hero-content">
               <div className="hero-badge mb-6 inline-flex items-center gap-2 rounded-full border border-cyan-300/30 bg-cyan-300/10 px-4 py-2 text-sm font-semibold text-cyan-100">
@@ -59,9 +69,9 @@ function App() {
                 {profile.location}
               </p>
 
-              <h1 className="hero-title max-w-4xl text-5xl font-black tracking-tight text-white sm:text-6xl lg:text-7xl">
+              <h1 className="hero-title max-w-4xl text-3xl font-black tracking-tight text-white sm:text-6xl lg:text-7xl">
                 {profile.name}
-                <span className="hero-role block bg-gradient-to-r from-cyan-200 via-blue-200 to-fuchsia-200 bg-clip-text text-transparent">
+                <span className="hero-role mt-3 text-2xl sm:text-5xl block bg-gradient-to-r from-cyan-200 via-blue-200 to-fuchsia-200 bg-clip-text text-transparent">
                   {profile.role}
                 </span>
               </h1>
@@ -88,14 +98,13 @@ function App() {
             </div>
 
             <aside className="hero-summary-card rounded-[2rem] border border-white/10 bg-white/[0.04] p-6 shadow-2xl shadow-slate-950/60">
-              <div className="portfolio-refresh-card rounded-[1.5rem] border border-cyan-300/20 bg-slate-950/80 p-6">
+              <div className="portfolio-refresh-card overflow-hidden rounded-[1.5rem] border border-cyan-300/20 bg-slate-950/80 p-6">
                 <p className="portfolio-refresh-eyebrow text-sm font-semibold uppercase tracking-[0.28em] text-cyan-300">
                   {content.hero.panelEyebrow}
                 </p>
                 <h2 className="portfolio-refresh-title mt-4 text-2xl font-bold text-white">
                   {content.hero.panelTitle}
                 </h2>
-                <p className="portfolio-refresh-text mt-4 leading-7 text-slate-300">{content.hero.panelText}</p>
               </div>
 
               <div className="hero-stats-list mt-6 grid gap-4">
@@ -144,16 +153,66 @@ function App() {
             ))}
           </div>
 
+          <div id="capabilities" className="project-capabilities mt-16 scroll-mt-28">
+            <h3 className="project-capabilities-title text-2xl font-bold text-white">
+              {content.projects.capabilitiesTitle}
+            </h3>
+            <p className="project-capabilities-description mt-3 max-w-3xl text-slate-300">
+              {content.projects.capabilitiesDescription}
+            </p>
+            <div className="capability-card-grid mt-8 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+              {content.projects.capabilities.map((capability) => (
+                <CapabilityCard
+                  key={capability.title}
+                  capability={capability}
+                  label={content.projects.capabilityLabel}
+                />
+              ))}
+            </div>
+          </div>
+
           <div className="project-archive mt-16">
             <h3 className="project-archive-title text-2xl font-bold text-white">{content.projects.archiveTitle}</h3>
             <p className="project-archive-description mt-3 max-w-3xl text-slate-300">
               {content.projects.archiveDescription}
             </p>
             <div className="archived-project-grid mt-8 grid gap-5 md:grid-cols-2">
-              {content.projects.archived.map((project) => (
-                <ProjectCard key={project.title} project={project} compact />
+              {visibleArchivedProjects.map((project) => (
+                <ProjectCard
+                  key={project.title}
+                  project={project}
+                  compact
+                  interactiveLabel={
+                    project.interactive === "tictactoe"
+                      ? content.ticTacToe.playGame
+                      : project.interactive === "calculator"
+                        ? content.calculator.open
+                        : undefined
+                  }
+                  onInteractiveClick={
+                    project.interactive === "tictactoe"
+                      ? () => setShowTicTacToe(true)
+                      : project.interactive === "calculator"
+                        ? () => setShowCalculator(true)
+                        : undefined
+                  }
+                />
               ))}
             </div>
+            {hasHiddenArchivedProjects ? (
+              <div className="project-archive-actions mt-6 flex justify-center">
+                <button
+                  type="button"
+                  className="project-archive-toggle inline-flex items-center justify-center rounded-full border border-white/15 px-6 py-3 text-sm font-bold text-white transition hover:border-cyan-300/60 hover:text-cyan-100"
+                  aria-expanded={showAllArchivedProjects}
+                  onClick={() => setShowAllArchivedProjects((current) => !current)}
+                >
+                  {showAllArchivedProjects
+                    ? content.projects.archiveShowLess
+                    : content.projects.archiveShowMore}
+                </button>
+              </div>
+            ) : null}
           </div>
         </Section>
 
@@ -286,6 +345,18 @@ function App() {
           </div>
         </div>
       </footer>
+
+      <TicTacToeModal
+        isOpen={showTicTacToe}
+        labels={content.ticTacToe}
+        onClose={() => setShowTicTacToe(false)}
+      />
+
+      <CalculatorModal
+        isOpen={showCalculator}
+        labels={content.calculator}
+        onClose={() => setShowCalculator(false)}
+      />
     </div>
   );
 }
