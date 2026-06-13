@@ -1,14 +1,33 @@
-import { links, profile } from "../data/portfolio";
+import type { Language } from "../data/portfolio";
 
-const navItems = [
-  { label: "About", href: "#about" },
-  { label: "Projects", href: "#projects" },
-  { label: "Experience", href: "#experience" },
-  { label: "Skills", href: "#skills" },
-  { label: "Contact", href: "#contact" },
-];
+type HeaderProps = {
+  language: Language;
+  onLanguageChange: (language: Language) => void;
+  navItems: {
+    label: string;
+    href: string;
+  }[];
+  links: {
+    label: string;
+    href: string;
+  }[];
+  profileName: string;
+  languageToggle: {
+    label: string;
+    ariaLabel: string;
+  };
+};
 
-export function Header() {
+export function Header({
+  language,
+  onLanguageChange,
+  navItems,
+  links,
+  profileName,
+  languageToggle,
+}: HeaderProps) {
+  const nextLanguage: Language = language === "en" ? "es" : "en";
+
   return (
     <header className="sticky top-0 z-50 border-b border-white/10 bg-slate-950/80 backdrop-blur-xl">
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4" aria-label="Main navigation">
@@ -16,7 +35,7 @@ export function Header() {
           <span className="flex h-10 w-10 items-center justify-center rounded-2xl border border-cyan-300/40 bg-cyan-300/10 text-sm font-bold text-cyan-200 shadow-lg shadow-cyan-950/40">
             CS
           </span>
-          <span className="hidden text-sm font-semibold text-white sm:block">{profile.name}</span>
+          <span className="hidden text-sm font-semibold text-white sm:block">{profileName}</span>
         </a>
 
         <div className="hidden items-center gap-6 text-sm font-medium text-slate-300 md:flex">
@@ -39,6 +58,14 @@ export function Header() {
               {link.label}
             </a>
           ))}
+          <button
+            type="button"
+            className="rounded-full border border-cyan-300/40 bg-cyan-300/10 px-3 py-2 text-xs font-bold uppercase tracking-[0.16em] text-cyan-100 transition hover:border-cyan-200 hover:bg-cyan-300/20"
+            onClick={() => onLanguageChange(nextLanguage)}
+            aria-label={languageToggle.ariaLabel}
+          >
+            {languageToggle.label}
+          </button>
         </div>
       </nav>
     </header>
