@@ -1,4 +1,7 @@
+import { Mail } from "lucide-react";
+
 import type { Language } from "../data/portfolio";
+import { GitHubIcon, LinkedInIcon } from "./icons/SocialIcons";
 
 type HeaderProps = {
   language: Language;
@@ -18,6 +21,22 @@ type HeaderProps = {
   };
 };
 
+function HeaderLinkIcon({ href }: { href: string }) {
+  if (href.startsWith("mailto:")) {
+    return <Mail className="h-4 w-4" aria-hidden="true" />;
+  }
+
+  if (href.includes("linkedin.com")) {
+    return <LinkedInIcon className="h-4 w-4" />;
+  }
+
+  if (href.includes("github.com")) {
+    return <GitHubIcon className="h-4 w-4" />;
+  }
+
+  return null;
+}
+
 export function Header({
   language,
   onLanguageChange,
@@ -29,7 +48,7 @@ export function Header({
   const nextLanguage: Language = language === "en" ? "es" : "en";
 
   return (
-    <header className="site-header sticky top-0 z-50 border-b border-white/10 bg-slate-950/80 backdrop-blur-xl">
+    <header className="site-header sticky top-0 z-50 w-full border-b border-white/10 bg-slate-950/90 backdrop-blur-xl supports-[backdrop-filter]:bg-slate-950/75">
       <nav
         className="site-navigation mx-auto flex max-w-6xl items-center justify-between px-6 py-4"
         aria-label="Main navigation"
@@ -49,21 +68,22 @@ export function Header({
           ))}
         </div>
 
-        <div className="header-actions flex items-center gap-3">
+        <div className="header-actions flex items-center gap-2">
           {links.map((link) => (
             <a
               key={link.href}
               href={link.href}
-              className="header-social-link rounded-full border border-white/10 px-3 py-2 text-xs font-bold uppercase tracking-[0.16em] text-slate-300 transition hover:border-cyan-300/60 hover:text-cyan-200"
+              className="header-social-link inline-flex h-8 w-8 items-center justify-center rounded-full border border-white/10 text-slate-300 transition hover:border-cyan-300/60 hover:text-cyan-200"
               target={link.href.startsWith("http") ? "_blank" : undefined}
               rel={link.href.startsWith("http") ? "noreferrer" : undefined}
+              aria-label={link.label}
             >
-              {link.label}
+              <HeaderLinkIcon href={link.href} />
             </a>
           ))}
           <button
             type="button"
-            className="language-toggle rounded-full border border-cyan-300/40 bg-cyan-300/10 px-3 py-2 text-xs font-bold uppercase tracking-[0.16em] text-cyan-100 transition hover:border-cyan-200 hover:bg-cyan-300/20"
+            className="language-toggle rounded-full border border-cyan-300/40 bg-cyan-300/10 px-3 py-2 text-xs font-semibold tracking-normal text-cyan-100 transition hover:border-cyan-200 hover:bg-cyan-300/20"
             onClick={() => onLanguageChange(nextLanguage)}
             aria-label={languageToggle.ariaLabel}
           >

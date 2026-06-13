@@ -41,3 +41,8 @@ a {
     animation-iteration-count: 1 !important;
   }
 }
+
+.project-card-image--fitness {
+  background: white;
+  padding: 2px;
+}

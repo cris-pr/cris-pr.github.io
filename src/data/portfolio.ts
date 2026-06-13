@@ -1,3 +1,9 @@
+import aiWebFeaturesIcon from "../../images/ai-web-features-icon.png";
+import calculatorPreview from "../../images/calculator-2.png";
+import ecommerceDevelopmentIcon from "../../images/ecommerce-development-icon.png";
+import fitnessAppIcon from "../../images/adaptive-icon.png";
+import tictactoePreview from "../../images/tictactoe.png";
+
 export type Language = "en" | "es";
 
 export type Project = {
@@ -7,11 +13,22 @@ export type Project = {
   description: string;
   impact: string[];
   technologies: string[];
+  image?: string;
+  imageAlt?: string;
+  imageClassName?: string;
   links?: {
     label: string;
     href: string;
   }[];
   featured?: boolean;
+  interactive?: "tictactoe" | "calculator";
+};
+
+export type Capability = {
+  title: string;
+  description: string;
+  highlights: string[];
+  technologies: string[];
 };
 
 export type Experience = {
@@ -71,9 +88,15 @@ type Content = {
     eyebrow: string;
     title: string;
     description: string;
+    capabilitiesTitle: string;
+    capabilitiesDescription: string;
+    capabilityLabel: string;
     archiveTitle: string;
     archiveDescription: string;
+    archiveShowMore: string;
+    archiveShowLess: string;
     featured: Project[];
+    capabilities: Capability[];
     archived: Project[];
   };
   experience: {
@@ -108,6 +131,24 @@ type Content = {
   };
   footer: {
     builtWith: string;
+  };
+  ticTacToe: {
+    title: string;
+    chooseSymbol: string;
+    chooseMode: string;
+    onePlayer: string;
+    twoPlayers: string;
+    settings: string;
+    restart: string;
+    turn: string;
+    winX: string;
+    winO: string;
+    tie: string;
+    playGame: string;
+  };
+  calculator: {
+    title: string;
+    open: string;
   };
 };
 
@@ -156,17 +197,16 @@ export const portfolioContent: Record<Language, Content> = {
       badge: "Available for thoughtful full-stack work",
       primaryCta: "View projects",
       secondaryCta: "Get in touch",
-      panelEyebrow: "Portfolio refresh",
-      panelTitle: "Modernized from static HTML into a React system.",
-      panelText:
-        "This rebuild moves the portfolio into a maintainable Vite, React, TypeScript, and Tailwind structure with content separated from presentation.",
+      panelEyebrow: "Current Side Project",
+      panelTitle: "React Native Fitness Tracking App",
+      panelText: "",
     },
     languageToggle: {
-      label: "ES",
+      label: "Language: En",
       ariaLabel: "Switch site language to Spanish",
     },
     stats: [
-      { label: "Years building software", value: "5+" },
+      { label: "Building software", value: "5+ years" },
       { label: "Current focus", value: "React Native + AI" },
       { label: "Primary lane", value: "Full-stack web" },
     ],
@@ -190,12 +230,18 @@ export const portfolioContent: Record<Language, Content> = {
     },
     projects: {
       eyebrow: "Projects",
-      title: "Current work first, early projects preserved as an archive.",
+      title: "Work that reflects where I am now — and where I started.",
       description:
-        "The new portfolio leads with current engineering direction and keeps older school projects as context instead of the main story.",
+        "",
+      capabilitiesTitle: "Production Capabilities",
+      capabilitiesDescription:
+        "Capability areas developed across production ecommerce and platform work in my current agency role.",
+      capabilityLabel: "Capability",
       archiveTitle: "Archive",
       archiveDescription:
-        "Earlier projects remain useful as a record of growth. They are presented here with clearer context and less visual weight than current work.",
+        "Earlier university and bootcamp projects preserved as a record of growth.",
+      archiveShowMore: "Show more",
+      archiveShowLess: "Show less",
       featured: [
         {
           title: "React Native Fitness App",
@@ -206,9 +252,12 @@ export const portfolioContent: Record<Language, Content> = {
           impact: [
             "Modern mobile architecture built with reusable React Native and TypeScript patterns.",
             "Product direction emphasizes fitness habit tracking, structured workouts, and future AI coaching experiences.",
-            "Portfolio centerpiece for current product, mobile, and cloud engineering skills.",
+            "Integrates cloud-backed data and cross-platform mobile UX into a cohesive training experience.",
           ],
           technologies: ["React Native", "TypeScript", "Cloud services", "AI features"],
+          image: fitnessAppIcon,
+          imageAlt: "React Native fitness app icon",
+          imageClassName: "project-card-image--fitness",
           featured: true,
         },
         {
@@ -223,6 +272,8 @@ export const portfolioContent: Record<Language, Content> = {
             "Works across legacy and modern web stacks while keeping reliability and maintainability in focus.",
           ],
           technologies: ["React", "JavaScript", "ASP.NET", "SQL Server", "APIs"],
+          image: ecommerceDevelopmentIcon,
+          imageAlt: "Production ecommerce development icon",
           featured: true,
         },
         {
@@ -233,25 +284,77 @@ export const portfolioContent: Record<Language, Content> = {
           impact: [
             "Focuses on targeted AI use cases instead of novelty integrations.",
             "Combines application logic, API orchestration, and UI feedback loops.",
-            "Supports the portfolio direction toward modern full-stack and AI-assisted software.",
+            "Prioritizes production-ready AI workflows that improve user outcomes rather than standalone experiments.",
           ],
           technologies: ["TypeScript", "API design", "Prompting", "UX flows"],
+          image: aiWebFeaturesIcon,
+          imageAlt: "AI-enabled web features icon",
           featured: true,
         },
       ],
-      archived: [
+      capabilities: [
         {
-          title: "Inter-Office Messaging Application",
-          period: "University project",
+          title: "BigCommerce B2B Storefronts",
           description:
-            "A Java messaging application with a hybrid peer-to-peer and client-server architecture for local office networks.",
-          impact: [
-            "Implemented UDP-based messaging constraints and peer discovery requirements.",
-            "Designed around saved conversations, server-managed logins, and direct peer communication.",
+            "Storefront foundation work for account-driven B2B commerce, including navigation, brand discovery, product detail pages, and buyer portal experiences.",
+          highlights: [
+            "Implements storefront templates and page experiences for BigCommerce B2B Edition.",
+            "Builds buyer portal flows and catalog layouts for complex product listings.",
           ],
-          technologies: ["Java", "UDP", "Networking", "Desktop app"],
-          links: [{ label: "Demo video", href: "https://player.vimeo.com/video/349784080" }],
+          technologies: ["BigCommerce B2B", "HTML", "CSS", "JavaScript"],
         },
+        {
+          title: "Custom Checkout & Commerce Flows",
+          description:
+            "Tailored checkout and purchasing experiences across BigCommerce and Shopify, including scheduling, discounts, and operational customizations.",
+          highlights: [
+            "Delivers custom checkout flows with user-driven scheduling and delivery logic.",
+            "Implements Shopify theme customizations and discount automations with Shopify Flow.",
+          ],
+          technologies: ["BigCommerce", "Shopify", "React", "TypeScript", "GraphQL", "Liquid"],
+        },
+        {
+          title: "Analytics, Testing & Consent",
+          description:
+            "Measurement and experimentation setup for production storefronts, covering tag management, consent compliance, and A/B testing infrastructure.",
+          highlights: [
+            "Configures and optimizes Google Tag Manager implementations for ecommerce properties.",
+            "Builds custom consent templates and supports experience testing.",
+          ],
+          technologies: ["GTM", "Optimizely", "HTML", "CSS", "JavaScript"],
+        },
+        {
+          title: "Platform Modernization & Backend Integration",
+          description:
+            "Upgrades and integration work on legacy and modern commerce stacks, including framework migrations and payment workflow delivery.",
+          highlights: [
+            "Migrates applications to .NET Core and maintains backend-connected storefront features.",
+            "Integrates payment providers and third-party services into production commerce workflows.",
+          ],
+          technologies: ["C#", ".NET", "ASP.NET", "PayPal", "APIs"],
+        },
+        {
+          title: "Web Portals & Custom Applications",
+          description:
+            "Account-driven portal experiences and custom web applications supporting specialized user workflows.",
+          highlights: [
+            "Builds portal interfaces with account-based access and domain-specific user flows.",
+            "Delivers production-ready frontend implementation connected to backend services.",
+          ],
+          technologies: ["React", "TypeScript", "HTML", "CSS", "JavaScript"],
+        },
+        {
+          title: "Security & Communication Integrations",
+          description:
+            "Hardening and messaging integrations for live commerce sites, including bot protection and customer communication workflows.",
+          highlights: [
+            "Implements reCAPTCHA and other security controls for public-facing forms and flows.",
+            "Integrates Twilio-powered communication into website workflows.",
+          ],
+          technologies: ["Twilio", "reCAPTCHA", "JavaScript"],
+        },
+      ],
+      archived: [
         {
           title: "Tic Tac Toe AI",
           period: "Early web project",
@@ -262,6 +365,9 @@ export const portfolioContent: Record<Language, Content> = {
             "Early practice in state management, game rules, and browser interactions.",
           ],
           technologies: ["HTML", "CSS", "JavaScript", "Game logic"],
+          image: tictactoePreview,
+          imageAlt: "Tic Tac Toe game preview",
+          interactive: "tictactoe",
         },
         {
           title: "Calculator",
@@ -273,6 +379,21 @@ export const portfolioContent: Record<Language, Content> = {
             "Captured an early step in moving from static pages into interactive experiences.",
           ],
           technologies: ["HTML", "CSS", "JavaScript"],
+          image: calculatorPreview,
+          imageAlt: "Calculator app preview",
+          interactive: "calculator",
+        },
+        {
+          title: "Inter-Office Messaging Application",
+          period: "University project",
+          description:
+            "A Java messaging application with a hybrid peer-to-peer and client-server architecture for local office networks.",
+          impact: [
+            "Implemented UDP-based messaging constraints and peer discovery requirements.",
+            "Designed around saved conversations, server-managed logins, and direct peer communication.",
+          ],
+          technologies: ["Java", "UDP", "Networking", "Desktop app"],
+          links: [{ label: "Demo video", href: "https://player.vimeo.com/video/349784080" }],
         },
         {
           title: "Music Database",
@@ -394,6 +515,24 @@ export const portfolioContent: Record<Language, Content> = {
     footer: {
       builtWith: "Built with Vite, React, TypeScript, and Tailwind CSS.",
     },
+    ticTacToe: {
+      title: "Tic Tac Toe",
+      chooseSymbol: "Choose Player 1's Symbol",
+      chooseMode: "Choose Game Mode",
+      onePlayer: "1 Player",
+      twoPlayers: "2 Players",
+      settings: "Settings",
+      restart: "Restart",
+      turn: "{turn}'s turn",
+      winX: "X Wins!!!",
+      winO: "O Wins!!!",
+      tie: "Tie!!!",
+      playGame: "Play game",
+    },
+    calculator: {
+      title: "Calculator",
+      open: "Open calculator",
+    },
   },
   es: {
     meta: {
@@ -425,17 +564,17 @@ export const portfolioContent: Record<Language, Content> = {
       badge: "Disponible para trabajo full-stack con propósito",
       primaryCta: "Ver proyectos",
       secondaryCta: "Contactar",
-      panelEyebrow: "Renovación del portafolio",
-      panelTitle: "Modernizado de HTML estático a un sistema en React.",
+      panelEyebrow: "Trabajo en Producción",
+      panelTitle: "Capacidades ecommerce y de plataforma en entornos en vivo",
       panelText:
-        "Esta renovación mueve el portafolio a una estructura mantenible con Vite, React, TypeScript y Tailwind, separando el contenido de la presentación.",
+        "",
     },
     languageToggle: {
-      label: "EN",
+      label: "Idioma: Español",
       ariaLabel: "Cambiar el idioma del sitio a inglés",
     },
     stats: [
-      { label: "Años desarrollando software", value: "5+" },
+      { label: "Desarrollando software", value: ">5 años" },
       { label: "Enfoque actual", value: "React Native + IA" },
       { label: "Especialidad principal", value: "Web full-stack" },
     ],
@@ -462,9 +601,15 @@ export const portfolioContent: Record<Language, Content> = {
       title: "Trabajo actual primero, proyectos iniciales preservados como archivo.",
       description:
         "El nuevo portafolio destaca primero la dirección actual de ingeniería y mantiene los proyectos universitarios como contexto, no como la historia principal.",
+      capabilitiesTitle: "Capacidades en Producción",
+      capabilitiesDescription:
+        "Áreas de capacidad desarrolladas en trabajo ecommerce y de plataforma en mi rol actual en agencia.",
+      capabilityLabel: "Capacidad",
       archiveTitle: "Archivo",
       archiveDescription:
         "Los proyectos anteriores siguen siendo útiles como registro de crecimiento. Aquí se presentan con más contexto y menos peso visual que el trabajo actual.",
+      archiveShowMore: "Ver más",
+      archiveShowLess: "Ver menos",
       featured: [
         {
           title: "App de Fitness en React Native",
@@ -475,9 +620,12 @@ export const portfolioContent: Record<Language, Content> = {
           impact: [
             "Arquitectura móvil moderna construida con patrones reutilizables de React Native y TypeScript.",
             "La dirección del producto enfatiza seguimiento de hábitos, rutinas estructuradas y futuras experiencias de coaching con IA.",
-            "Proyecto central del portafolio para mostrar habilidades actuales de producto, móvil y cloud.",
+            "Integra datos en la nube y experiencias móviles multiplataforma en un flujo de entrenamiento cohesivo.",
           ],
           technologies: ["React Native", "TypeScript", "Servicios cloud", "Funciones de IA"],
+          image: fitnessAppIcon,
+          imageAlt: "Icono de la app de fitness en React Native",
+          imageClassName: "project-card-image--fitness",
           featured: true,
         },
         {
@@ -492,6 +640,8 @@ export const portfolioContent: Record<Language, Content> = {
             "Trabaja entre stacks legacy y modernos manteniendo enfoque en confiabilidad y mantenibilidad.",
           ],
           technologies: ["React", "JavaScript", "ASP.NET", "SQL Server", "APIs"],
+          image: ecommerceDevelopmentIcon,
+          imageAlt: "Icono de desarrollo ecommerce en producción",
           featured: true,
         },
         {
@@ -502,25 +652,77 @@ export const portfolioContent: Record<Language, Content> = {
           impact: [
             "Se enfoca en casos de uso de IA concretos en lugar de integraciones solo por novedad.",
             "Combina lógica de aplicación, orquestación de APIs y ciclos de retroalimentación en UI.",
-            "Apoya la dirección del portafolio hacia software full-stack moderno y asistido por IA.",
+            "Prioriza flujos de IA listos para producción que mejoran resultados para usuarios en lugar de experimentos aislados.",
           ],
           technologies: ["TypeScript", "Diseño de APIs", "Prompts", "Flujos UX"],
+          image: aiWebFeaturesIcon,
+          imageAlt: "Icono de funciones web con IA",
           featured: true,
         },
       ],
-      archived: [
+      capabilities: [
         {
-          title: "Aplicación de Mensajería Inter-Office",
-          period: "Proyecto universitario",
+          title: "Storefronts BigCommerce B2B",
           description:
-            "Aplicación de mensajería en Java con arquitectura híbrida peer-to-peer y cliente-servidor para redes locales de oficina.",
-          impact: [
-            "Implementó requisitos de mensajería con UDP y descubrimiento de pares.",
-            "Diseñada alrededor de conversaciones guardadas, logins manejados por servidor y comunicación directa entre pares.",
+            "Trabajo de base en storefronts para comercio B2B por cuenta, incluyendo navegación, descubrimiento de marcas, páginas de detalle y experiencias de buyer portal.",
+          highlights: [
+            "Implementa plantillas de storefront y experiencias de página para BigCommerce B2B Edition.",
+            "Construye flujos de buyer portal y layouts de catálogo para listados de productos complejos.",
           ],
-          technologies: ["Java", "UDP", "Networking", "App desktop"],
-          links: [{ label: "Video demo", href: "https://player.vimeo.com/video/349784080" }],
+          technologies: ["BigCommerce B2B", "HTML", "CSS", "JavaScript"],
         },
+        {
+          title: "Checkout Personalizado y Flujos de Comercio",
+          description:
+            "Experiencias de checkout y compra a medida en BigCommerce y Shopify, incluyendo programación, descuentos y personalizaciones operacionales.",
+          highlights: [
+            "Entrega flujos de checkout personalizados con lógica de programación y entrega definida por el usuario.",
+            "Implementa personalizaciones de tema en Shopify y automatizaciones de descuento con Shopify Flow.",
+          ],
+          technologies: ["BigCommerce", "Shopify", "React", "TypeScript", "GraphQL", "Liquid"],
+        },
+        {
+          title: "Analítica, Pruebas y Consentimiento",
+          description:
+            "Configuración de medición y experimentación para storefronts en producción, cubriendo gestión de tags, cumplimiento de consentimiento e infraestructura de pruebas A/B.",
+          highlights: [
+            "Configura y optimiza implementaciones de Google Tag Manager para propiedades ecommerce.",
+            "Construye plantillas personalizadas de consentimiento y soporta pruebas de experiencia.",
+          ],
+          technologies: ["GTM", "Optimizely", "HTML", "CSS", "JavaScript"],
+        },
+        {
+          title: "Modernización de Plataforma e Integración Backend",
+          description:
+            "Actualizaciones e integración en stacks de comercio legacy y modernos, incluyendo migraciones de framework y entrega de flujos de pago.",
+          highlights: [
+            "Migra aplicaciones a .NET Core y mantiene funcionalidades de storefront conectadas a backend.",
+            "Integra proveedores de pago y servicios de terceros en flujos de comercio en producción.",
+          ],
+          technologies: ["C#", ".NET", "ASP.NET", "PayPal", "APIs"],
+        },
+        {
+          title: "Portales Web y Aplicaciones Personalizadas",
+          description:
+            "Experiencias de portal por cuenta y aplicaciones web personalizadas que soportan flujos de usuario especializados.",
+          highlights: [
+            "Construye interfaces de portal con acceso por cuenta y flujos de usuario específicos del dominio.",
+            "Entrega implementación frontend lista para producción conectada a servicios backend.",
+          ],
+          technologies: ["React", "TypeScript", "HTML", "CSS", "JavaScript"],
+        },
+        {
+          title: "Integraciones de Seguridad y Comunicación",
+          description:
+            "Endurecimiento e integraciones de mensajería para sitios de comercio en vivo, incluyendo protección contra bots y flujos de comunicación con clientes.",
+          highlights: [
+            "Implementa reCAPTCHA y otros controles de seguridad para formularios y flujos públicos.",
+            "Integra comunicación con Twilio en flujos del sitio web.",
+          ],
+          technologies: ["Twilio", "reCAPTCHA", "JavaScript"],
+        },
+      ],
+      archived: [
         {
           title: "IA de Tic Tac Toe",
           period: "Proyecto web inicial",
@@ -531,6 +733,9 @@ export const portfolioContent: Record<Language, Content> = {
             "Práctica inicial en manejo de estado, reglas de juego e interacciones del navegador.",
           ],
           technologies: ["HTML", "CSS", "JavaScript", "Lógica de juego"],
+          image: tictactoePreview,
+          imageAlt: "Vista previa del juego Tic Tac Toe",
+          interactive: "tictactoe",
         },
         {
           title: "Calculadora",
@@ -542,6 +747,21 @@ export const portfolioContent: Record<Language, Content> = {
             "Capturó un paso temprano de páginas estáticas hacia experiencias interactivas.",
           ],
           technologies: ["HTML", "CSS", "JavaScript"],
+          image: calculatorPreview,
+          imageAlt: "Vista previa de la calculadora",
+          interactive: "calculator",
+        },
+        {
+          title: "Aplicación de Mensajería Inter-Office",
+          period: "Proyecto universitario",
+          description:
+            "Aplicación de mensajería en Java con arquitectura híbrida peer-to-peer y cliente-servidor para redes locales de oficina.",
+          impact: [
+            "Implementó requisitos de mensajería con UDP y descubrimiento de pares.",
+            "Diseñada alrededor de conversaciones guardadas, logins manejados por servidor y comunicación directa entre pares.",
+          ],
+          technologies: ["Java", "UDP", "Networking", "App desktop"],
+          links: [{ label: "Video demo", href: "https://player.vimeo.com/video/349784080" }],
         },
         {
           title: "Base de Datos Musical",
@@ -664,6 +884,24 @@ export const portfolioContent: Record<Language, Content> = {
     },
     footer: {
       builtWith: "Construido con Vite, React, TypeScript y Tailwind CSS.",
+    },
+    ticTacToe: {
+      title: "Tic Tac Toe",
+      chooseSymbol: "Elige el símbolo del Jugador 1",
+      chooseMode: "Elige el modo de juego",
+      onePlayer: "1 Jugador",
+      twoPlayers: "2 Jugadores",
+      settings: "Ajustes",
+      restart: "Reiniciar",
+      turn: "Turno de {turn}",
+      winX: "¡Gana X!",
+      winO: "¡Gana O!",
+      tie: "¡Empate!",
+      playGame: "Jugar",
+    },
+    calculator: {
+      title: "Calculadora",
+      open: "Abrir calculadora",
     },
   },
 };
