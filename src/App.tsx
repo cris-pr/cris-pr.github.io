@@ -302,7 +302,6 @@ function App() {
             <div className="contact-card-layout flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
               <div className="contact-copy">
                 <p className="contact-email text-2xl font-bold text-white">{profile.email}</p>
-                <p className="contact-note mt-3 max-w-2xl leading-7 text-slate-300">{content.contact.note}</p>
               </div>
               <div className="contact-actions flex flex-col gap-3 sm:flex-row">
                 <a
