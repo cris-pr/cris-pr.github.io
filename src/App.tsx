@@ -313,7 +313,9 @@ function App() {
                   <ArrowRight className="contact-email-cta-icon h-4 w-4" aria-hidden="true" />
                 </a>
                 <a
-                  href={`mailto:${profile.email}?subject=${encodeURIComponent(content.contact.resumeSubject)}`}
+                  href={profile.resumeHref}
+                  target="_blank"
+                  rel="noreferrer"
                   className="contact-resume-cta inline-flex items-center justify-center gap-2 rounded-full border border-white/15 px-6 py-3 text-sm font-bold text-white transition hover:border-cyan-300/60 hover:text-cyan-100"
                 >
                   {content.contact.resumeCta}

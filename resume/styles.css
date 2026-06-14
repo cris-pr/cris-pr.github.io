@@ -1,527 +1,416 @@
-@import url("https://fonts.googleapis.com/css?family=Roboto");
-
-
-/* Define CSS variables */
 :root {
-  --bg-color: #8DA7BE;
-  --card-bg: #8DA7BE;
-  --dark-blue: #3d4856;
-  --medium-blue: #3949ab;
-  --light-blue: #3f51b5;
-  --lighter-blue: #5c6bc0;
-  --lightest-blue: #9fa8da;
-  --white: #ffffff;
-  --black: #0e1442;
-  --icon-color: #0e1442;
-  --yellow: #3d4856;
-  --dark-pink: #ad1457;
-  --light-pink: #d81b60;
+  --page: #eef3f8;
+  --paper: #ffffff;
+  --ink: #172033;
+  --muted: #59657a;
+  --line: #d9e1ec;
+  --accent: #075985;
+  --accent-dark: #0f172a;
+  --accent-soft: #e0f2fe;
+  --shadow: 0 24px 70px rgba(15, 23, 42, 0.12);
 }
 
 * {
-  outline: none;
-}
-*,
-*:before,
-*:after {
-  box-sizing: inherit;
-}
-html,
-body {
   box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  transition: 0.5s;
-  background: var(--white);
-  cursor: default;
-  font-family: "Roboto", sans-serif;
+}
+
+html {
+  background: var(--page);
+  color: var(--ink);
+  font-family: "Inter", Arial, sans-serif;
   font-size: 16px;
+  line-height: 1.55;
 }
+
+body {
+  margin: 0;
+}
+
 a {
+  color: inherit;
   text-decoration: none;
-  color: var(--white);
-  display: block;
-  transition-duration: 0.3s;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-h2 {
-  text-align: center;
-}
-h3 {
-  color: var(--icon-color);
-  margin: 10px 0;
-  font-size: 1.25em;
-}
-.resume {
-  max-width: 960px;
-  background: var(--bg-color);
-  color: var(--white);
-  margin: 20px auto;
-  box-shadow: 10px 10px var(--black);
-  position: relative;
-  display: flex;
-  
-  @media screen and (max-width: 800px) {
-    flex-direction: column;
-  }
-}
-.resume .base,
-.resume .func {
-  box-sizing: border-box;
-  float: left;
-}
-.resume .base > div,
-.resume .func > div {
-  padding-bottom: 10px;
-}
-.resume .base > div:last-of-type,
-.resume .func > div:last-of-type {
-  padding-bottom: 0;
-}
-.resume .base {
-  width: 30%;
-  padding: 30px 15px;
-  background: var(--card-bg);
-  color: var(--white);
-  
-  @media screen and (max-width: 800px) {
-    width: 100%;
-  }
 }
 
-.resume .base .profile {
-  background: var(--icon-color);
-  padding: 30px 15px 40px 15px;
-  margin: -30px -15px 45px -15px;
-  position: relative;
-  z-index: 2;
+a:hover {
+  color: var(--accent);
 }
-.resume .base .profile::after {
-  content: "";
-  position: absolute;
-  background: var(--dark-blue);
-  width: 100%;
-  height: 30px;
-  bottom: -15px;
-  left: 0;
-  transform: skewY(-5deg);
-  z-index: -1;
 
-  @media screen and (max-width: 800px) {
-    display: none;
-  }
+.resume-shell {
+  padding: 32px 18px;
 }
-.resume .base .profile .photo img {
-  width: 100%;
-  border-radius: 50%;
 
-  @media screen and (max-width: 800px) {
-    width: 150px;
-  }
+.resume-card {
+  width: min(1100px, 100%);
+  margin: 0 auto;
+  padding: 48px;
+  background: var(--paper);
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  border-radius: 28px;
+  box-shadow: var(--shadow);
 }
-.resume .base .profile .photo {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 310px;
+  gap: 32px;
+  align-items: start;
+  padding-bottom: 28px;
+  border-bottom: 2px solid var(--accent-dark);
 }
-.resume .base .profile .fa-rocket {
-  font-size: 100px;
-  text-align: center;
-  margin: auto;
-  color: var(--card-bg);
+
+.eyebrow {
+  margin: 0 0 10px;
+  color: var(--accent);
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
 }
-.resume .base .profile .info {
-  text-align: center;
-  color: var(--white);
-}
-.resume .base .profile .info .name {
-  margin-top: 10px;
-  margin-bottom: 0;
-  font-size: 1.75em;
-  color: white;
-}
-.resume .base .profile .info .job {
-  margin-top: 10px;
-  margin-bottom: 0;
-  font-size: 1.5em;
-  color: white;
-}
-.resume .base .contact div {
-  line-height: 24px;
-}
-.resume .base .contact div a:hover {
-  color: var(--yellow);
-}
-.resume .base .contact div a:hover span::after {
-  width: 100%;
-}
-.resume .base .contact div:hover i {
-  color: var(--yellow);
-}
-.resume .base .contact div i {
-  color: var(--icon-color);
-  width: 20px;
-  height: 20px;
-  font-size: 20px;
-  text-align: center;
-  margin-right: 15px;
-  transition-duration: 0.3s;
-}
-.resume .base .contact div span {
-  position: relative;
-}
-.resume .base .contact div span::after {
-  content: "";
-  position: absolute;
-  background: var(--yellow);
-  height: 1px;
-  width: 0;
-  bottom: 0;
-  left: 0;
-  transition-duration: 0.3s;
-}
-.resume .base .follow .box {
-  text-align: left;
-  vertical-align: middle;
-}
-.resume .base .follow .box a {
-  display: inline-block;
-  vertical-align: text-bottom;
-  text-align: center;
-}
-.resume .base .follow .box a:hover i::before {
-  transform: rotate(-45deg) scale(1.5);
-}
-.resume .base .follow .box i {
-  display: inline-block;
-  font-size: 30px;
-  background: var(--icon-color);
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  line-height: 60px;
-  color: var(--card-bg);
-  margin: 0 10px 10px 10px;
-  transition-duration: 0.3s;
-}
-.resume .base .follow .box i::before {
-  transition-duration: 0.3s;
-}
-.resume .base .follow .box i.fa::before {
-  display: block;
-}
-.resume .func {
-  width: 100%;
-  padding: 30px;
-}
-.resume .func:hover > div {
-  transition-duration: 0.5s;
-}
-.resume .func:hover > div:hover h3 i {
-  /* transform: scale(1.25); */
-}
-.resume .func h3 {
-  transition-duration: 0.3s;
+
+h1,
+h2,
+h3,
+p {
   margin-top: 0;
 }
-.resume .func h3 i {
-  color: var(--card-bg);
-  background: var(--icon-color);
-  width: 42px;
-  height: 42px;
-  font-size: 20px;
-  line-height: 42px;
-  border-radius: 50%;
-  text-align: center;
-  vertical-align: middle;
-  margin-right: 8px;
-  transition-duration: 0.3s;
+
+h1 {
+  max-width: 780px;
+  margin-bottom: 16px;
+  color: var(--accent-dark);
+  font-size: clamp(2.35rem, 5vw, 4.25rem);
+  line-height: 0.96;
+  letter-spacing: -0.055em;
 }
-.resume .func .work,
-.resume .func .edu {
-  float: left;
+
+h2 {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 18px;
+  color: var(--accent-dark);
+  font-size: 1.02rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
 }
-.resume .func .work small,
-.resume .func .edu small {
-  display: block;
-  opacity: 0.7;
-}
-.resume .func .work ul li,
-.resume .func .edu ul li {
-  position: relative;
-  margin-left: 15px;
-  padding-left: 25px;
-  padding-bottom: 15px;
-}
-.resume .func .work ul li:hover::before,
-.resume .func .edu ul li:hover::before {
-  animation: circle 1.2s infinite;
-}
-.resume .func .work ul li:hover span,
-.resume .func .edu ul li:hover span {
-  /* color: var(--yellow); */
-}
-@keyframes circle {
-  from {
-    box-shadow: 0 0 0 0px var(--yellow);
-  }
-  to {
-    box-shadow: 0 0 0 6px rgba(255, 255, 255, 0);
-  }
-}
-.resume .func .work ul li:first-of-type::before,
-.resume .func .edu ul li:first-of-type::before {
-  width: 10px;
-  height: 10px;
-  left: 1px;
-}
-.resume .func .work ul li:last-of-type,
-.resume .func .edu ul li:last-of-type {
-  padding-bottom: 3px;
-}
-.resume .func .work ul li:last-of-type::after,
-.resume .func .edu ul li:last-of-type::after {
-  border-radius: 1.5px;
-}
-.resume .func .work ul li::before,
-.resume .func .work ul li::after,
-.resume .func .edu ul li::before,
-.resume .func .edu ul li::after {
+
+h2::after {
   content: "";
-  display: block;
-  position: absolute;
+  flex: 1;
+  height: 1px;
+  background: var(--line);
 }
-.resume .func .work ul li::before,
-.resume .func .edu ul li::before {
-  width: 7px;
-  height: 7px;
-  border: 3px solid var(--white);
-  background: var(--icon-color);
-  border-radius: 50%;
-  left: 3px;
-  z-index: 1;
-}
-.resume .func .work ul li::after,
-.resume .func .edu ul li::after {
-  width: 3px;
-  height: 100%;
-  background: var(--white);
-  left: 5px;
-  top: 0;
-}
-.resume .func .work ul li span,
-.resume .func .edu ul li span {
-  transition-duration: 0.3s;
-}
-.resume .func .work {
-  width: 48%;
-  background: var(--card-bg);
-  padding: 15px;
-  margin: 0 4% 15px 0;
-}
-.resume .func .edu {
-  width: 48%;
-  background: var(--card-bg);
-  padding: 15px;
-}
-.resume .func .skills-prog {
-  clear: both;
-  background: var(--card-bg);
-  padding: 15px;
-}
-.resume .func .skills-prog ul {
-  margin-left: 15px;
-}
-.resume .func .skills-prog ul li {
-  margin-bottom: 8px;
-  display: flex;
-  align-items: center;
-  transition-duration: 0.3s;
-}
-.resume .func .skills-prog ul li:hover {
-  /* color: var(--yellow); */
-}
-.resume .func .skills-prog ul li:hover .skills-bar .bar {
-  /* background: var(--yellow);
-  box-shadow: 0 0 0 1px var(--yellow); */
-}
-.resume .func .skills-prog ul li span {
-  display: block;
-  width: 120px;
-}
-.resume .func .skills-prog ul li .skills-bar {
-  background: var(--white);
-  height: 2px;
-  width: calc(100% - 120px);
-  position: relative;
-  border-radius: 2px;
 
-  @media screen and (max-width: 800px) {
-    display: none;
-  }
+h3 {
+  margin-bottom: 4px;
+  color: var(--accent-dark);
+  font-size: 1rem;
+  line-height: 1.3;
 }
-.resume .func .skills-prog ul li .skills-bar .bar {
-  position: absolute;
-  top: -1px;
-  height: 4px;
-  background: var(--icon-color);
-  box-shadow: 0 0 0 var(--icon-color);
-  border-radius: 5px;
+
+.hero-summary {
+  max-width: 760px;
+  margin-bottom: 0;
+  color: var(--muted);
+  font-size: 1.08rem;
 }
-.resume .func .skills-soft {
-  clear: both;
-  background: var(--card-bg);
-  padding: 15px;
-  margin: 15px 0 0;
+
+.contact-card {
+  display: grid;
+  gap: 9px;
+  padding: 18px;
+  color: #dbeafe;
+  background: linear-gradient(135deg, var(--accent-dark), #164e63);
+  border-radius: 20px;
+  font-size: 0.92rem;
+  overflow-wrap: anywhere;
 }
-.resume .func .skills-soft ul {
+
+.contact-card a {
+  color: #eff6ff;
+}
+
+.contact-card a:hover {
+  color: #bae6fd;
+}
+
+.contact-card span {
+  color: #bfdbfe;
+}
+
+.section {
+  margin-top: 30px;
+}
+
+.section-summary p {
+  margin-bottom: 0;
+  color: var(--muted);
+  font-size: 1.02rem;
+}
+
+.skill-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.skill-grid > div,
+.highlight-list article,
+.education-grid article {
+  padding: 18px;
+  background: #f8fafc;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+}
+
+.skill-grid p,
+.highlight-list p,
+.education-grid p {
+  margin-bottom: 0;
+  color: var(--muted);
+  font-size: 0.94rem;
+}
+
+.highlight-list {
+  display: grid;
+  gap: 14px;
+}
+
+.highlight-list h3 {
   display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: baseline;
+}
+
+.highlight-list h3 span {
+  color: var(--accent);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.timeline {
+  display: grid;
+  gap: 22px;
+}
+
+.role {
+  padding-left: 22px;
+  border-left: 3px solid var(--accent);
+}
+
+.role-heading {
+  display: flex;
+  gap: 18px;
   justify-content: space-between;
-  text-align: center;
-  @media screen and (max-width: 800px) {
-    flex-wrap: wrap;
-    justify-content: center;
+  margin-bottom: 10px;
+}
+
+.role-heading p {
+  margin-bottom: 0;
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.role-heading span {
+  flex: 0 0 auto;
+  color: var(--muted);
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-align: right;
+}
+
+ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
+li {
+  margin-bottom: 6px;
+  color: var(--muted);
+}
+
+li:last-child {
+  margin-bottom: 0;
+}
+
+.education-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.education-grid span {
+  display: block;
+  margin-top: 6px;
+  color: var(--muted);
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+@media (max-width: 900px) {
+  .resume-card {
+    padding: 30px;
+    border-radius: 22px;
+  }
+
+  .hero {
+    grid-template-columns: 1fr;
+  }
+
+  .skill-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
-.resume .func .skills-soft ul li {
-  position: relative;
-}
-.resume .func .skills-soft ul li:hover svg .cbar {
-  stroke: var(--yellow);
-  stroke-width: 4px;
-}
-.resume .func .skills-soft ul li svg {
-  fill: transparent;
-  transform: rotate(-90deg);
-}
-.resume .func .skills-soft ul li svg circle {
-  stroke-width: 1px;
-  stroke: var(--white);
-}
-.resume .func .skills-soft ul li svg .cbar {
-  stroke-width: 3px;
-  stroke: var(--icon-color);
-  stroke-linecap: round;
-}
-.resume .func .skills-soft ul li span,
-.resume .func .skills-soft ul li small {
-  position: absolute;
-  display: block;
-  width: 100%;
-  top: 52%;
-  transition-duration: 0.3s;
-}
-.resume .func .skills-soft ul li span {
-  top: 40%;
-}
-.resume .func .interests {
-  background: var(--card-bg);
-  margin: 15px 0 0;
-  padding: 15px;
-}
-.soft-skill-text {
-  padding: 0 40px;
-}
-.resume .func .interests-items {
-  box-sizing: border-box;
-  padding: 0 0 15px;
-  max-width: 400px;
-  text-align: center;
-  display: flex;
-  justify-content: space-between;
-  @media screen and (max-width: 800px) {
-    flex-wrap: wrap;
+
+@media (max-width: 640px) {
+  .resume-shell {
+    padding: 0;
+  }
+
+  .resume-card {
+    padding: 24px 18px;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .skill-grid,
+  .education-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .role-heading {
+    display: block;
+  }
+
+  .role-heading span {
+    display: block;
+    margin-top: 4px;
+    text-align: left;
   }
 }
-.resume .func .interests-items div {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-}
-.resume .func .interests-items div:hover span {
-  color: var(--yellow);
-  transition-duration: 0.3s;
-}
-.resume .func .interests-items div i {
-  font-size: 45px;
-  width: 60px;
-  height: 60px;
-  line-height: 60px;
-  color: var(--icon-color);
-  transition-duration: 0.3s;
-}
-.resume .func .interests-items div span {
-  display: block;
-}
 
-/* The flip card container - set the width and height to whatever you want. We have added the border property to demonstrate that the flip itself goes out of the box on hover (remove perspective if you don't want the 3D effect */
-.flip-card {
-  background-color: transparent;
-  width: 200px;
-  height: 200px;
-  perspective: 1000px; /* Remove this if you don't want the 3D effect */
-  border: none;
-}
+@media print {
+  :root {
+    --page: #ffffff;
+    --paper: #ffffff;
+    --ink: #111827;
+    --muted: #374151;
+    --line: #cbd5e1;
+    --accent: #075985;
+    --accent-dark: #111827;
+  }
 
-/* This container is needed to position the front and back side */
-.flip-card-inner {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  text-align: center;
-  transition: transform 0.8s;
-  transform-style: preserve-3d;
-  color: white;
-}
+  html {
+    font-size: 11px;
+  }
 
+  body {
+    background: #ffffff;
+  }
 
-/* Do an horizontal flip when you move the mouse over the flip box container */
-.flip-card:hover .flip-card-inner, .flip-card:focus .flip-card-inner {
-  transform: rotateY(180deg);
-}
+  a {
+    color: inherit;
+  }
 
+  .resume-shell {
+    padding: 0;
+  }
 
+  .resume-card {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+  }
 
-/* Position the front and back side */
-.flip-card-front, .flip-card-back {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  -webkit-backface-visibility: hidden; /* Safari */
-  backface-visibility: hidden;
-  background-color: var(--card-bg);
-}
+  .hero {
+    grid-template-columns: minmax(0, 1fr) 260px;
+    gap: 20px;
+    padding-bottom: 14px;
+  }
 
-/* Style the front side (fallback if image is missing) */
-.flip-card-front {
-  background-color: var(--card-bg);
-  transition: opacity;
-}
+  h1 {
+    font-size: 2.7rem;
+  }
 
-/* Style the back side */
-.flip-card-back {
-  background-color: var(--card-bg);
-  color: white;
-  transform: rotateY(180deg);
-}
+  h2 {
+    margin-bottom: 9px;
+    font-size: 0.9rem;
+  }
 
-.circle {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+  h3 {
+    font-size: 0.95rem;
+  }
 
-.circle span {
-  top: unset!important;
-}
+  .hero-summary,
+  .section-summary p {
+    font-size: 0.95rem;
+  }
 
-.circle svg {
-  transform: none!important;
+  .contact-card {
+    padding: 10px;
+    color: var(--ink);
+    background: #f8fafc;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    font-size: 0.78rem;
+  }
+
+  .contact-card a,
+  .contact-card span {
+    color: var(--ink);
+  }
+
+  .section {
+    margin-top: 14px;
+  }
+
+  .skill-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+  }
+
+  .skill-grid > div,
+  .highlight-list article,
+  .education-grid article {
+    padding: 8px;
+    border-radius: 8px;
+  }
+
+  .highlight-list {
+    gap: 8px;
+  }
+
+  .timeline {
+    gap: 12px;
+  }
+
+  .role {
+    padding-left: 12px;
+    border-left-width: 2px;
+    break-inside: avoid;
+  }
+
+  .role-heading {
+    margin-bottom: 4px;
+  }
+
+  .role-heading span {
+    font-size: 0.78rem;
+  }
+
+  li {
+    margin-bottom: 2px;
+  }
+
+  .compact-role {
+    break-inside: auto;
+  }
 }

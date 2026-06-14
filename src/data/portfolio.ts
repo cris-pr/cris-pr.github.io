@@ -509,7 +509,7 @@ export const portfolioContent: Record<Language, Content> = {
       note:
         "The site is now structured so content can be updated quickly as new projects, case studies, and resume details are ready.",
       emailCta: "Email me",
-      resumeCta: "Request resume",
+      resumeCta: "View resume",
       resumeSubject: "Resume request",
     },
     footer: {
@@ -879,7 +879,7 @@ export const portfolioContent: Record<Language, Content> = {
       note:
         "El sitio ahora está estructurado para actualizar contenido rápidamente cuando haya nuevos proyectos, casos de estudio y detalles del resume.",
       emailCta: "Enviarme correo",
-      resumeCta: "Solicitar resume",
+      resumeCta: "Ver resume",
       resumeSubject: "Solicitud de resume",
     },
     footer: {
