@@ -158,7 +158,7 @@ const sharedProfile = {
   name: "Cristian Sánchez Vázquez",
   location: "Puerto Rico",
   email,
-  resumeHref: "resume/index.html",
+  resumeHref: "resume/cristian-joel-sanchez-vazquez-senior-full-stack-developer.pdf",
 };
 
 const sharedLinks = {

@@ -15,6 +15,11 @@
 }
 
 html {
+  print-color-adjust: exact;
+  -webkit-print-color-adjust: exact;
+}
+
+html {
   background: var(--page);
   color: var(--ink);
   font-family: "Inter", Arial, sans-serif;
@@ -295,6 +300,11 @@ li:last-child {
 }
 
 @media print {
+  @page {
+    size: Letter;
+    margin: 0.35in;
+  }
+
   :root {
     --page: #ffffff;
     --paper: #ffffff;
@@ -306,7 +316,8 @@ li:last-child {
   }
 
   html {
-    font-size: 11px;
+    font-size: 9.4px;
+    line-height: 1.35;
   }
 
   body {
@@ -331,36 +342,38 @@ li:last-child {
   }
 
   .hero {
-    grid-template-columns: minmax(0, 1fr) 260px;
-    gap: 20px;
-    padding-bottom: 14px;
+    grid-template-columns: minmax(0, 1fr) 245px;
+    gap: 14px;
+    padding-bottom: 9px;
   }
 
   h1 {
-    font-size: 2.7rem;
+    margin-bottom: 8px;
+    font-size: 2.45rem;
   }
 
   h2 {
-    margin-bottom: 9px;
-    font-size: 0.9rem;
+    margin-bottom: 6px;
+    font-size: 0.82rem;
   }
 
   h3 {
-    font-size: 0.95rem;
+    font-size: 0.9rem;
   }
 
   .hero-summary,
   .section-summary p {
-    font-size: 0.95rem;
+    font-size: 0.88rem;
   }
 
   .contact-card {
-    padding: 10px;
+    gap: 5px;
+    padding: 7px;
     color: var(--ink);
     background: #f8fafc;
     border: 1px solid var(--line);
     border-radius: 10px;
-    font-size: 0.78rem;
+    font-size: 0.72rem;
   }
 
   .contact-card a,
@@ -369,45 +382,56 @@ li:last-child {
   }
 
   .section {
-    margin-top: 14px;
+    margin-top: 9px;
   }
 
   .skill-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 8px;
+    gap: 5px;
   }
 
   .skill-grid > div,
   .highlight-list article,
   .education-grid article {
-    padding: 8px;
-    border-radius: 8px;
+    padding: 5px;
+    border-radius: 6px;
+  }
+
+  .skill-grid p,
+  .highlight-list p,
+  .education-grid p {
+    font-size: 0.82rem;
   }
 
   .highlight-list {
-    gap: 8px;
+    gap: 5px;
   }
 
   .timeline {
-    gap: 12px;
+    gap: 7px;
   }
 
   .role {
-    padding-left: 12px;
+    padding-left: 9px;
     border-left-width: 2px;
     break-inside: avoid;
   }
 
   .role-heading {
-    margin-bottom: 4px;
+    gap: 8px;
+    margin-bottom: 2px;
   }
 
   .role-heading span {
-    font-size: 0.78rem;
+    font-size: 0.72rem;
+  }
+
+  ul {
+    padding-left: 13px;
   }
 
   li {
-    margin-bottom: 2px;
+    margin-bottom: 1px;
   }
 
   .compact-role {
