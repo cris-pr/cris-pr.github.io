@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="title desc">
+  <title id="title">Man using a lat pulldown machine</title>
+  <desc id="desc">Simple line icon showing a seated man pulling down a wide bar on a cable weight machine.</desc>
+  <g fill="none" stroke="#222" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Machine frame -->
+    <path d="M54 220V36h148v184" stroke-width="12"/>
+    <path d="M54 36h148" stroke-width="12"/>
+    <path d="M76 220h104" stroke-width="12"/>
+    <path d="M128 38v46" stroke-width="6"/>
+    <circle cx="128" cy="58" r="10" stroke-width="6"/>
+
+    <!-- Pulldown cable and bar -->
+    <path d="M128 68v34" stroke-width="6"/>
+    <path d="M70 102h116" stroke-width="10"/>
+    <path d="M70 102c-8 0-14 6-14 14" stroke-width="8"/>
+    <path d="M186 102c8 0 14 6 14 14" stroke-width="8"/>
+
+    <!-- Person -->
+    <circle cx="128" cy="122" r="17" stroke-width="10"/>
+    <path d="M128 142v42" stroke-width="12"/>
+    <path d="M104 150c-12-10-18-20-22-38" stroke-width="10"/>
+    <path d="M152 150c12-10 18-20 22-38" stroke-width="10"/>
+    <path d="M82 112l-12-10" stroke-width="10"/>
+    <path d="M174 112l12-10" stroke-width="10"/>
+
+    <!-- Seat and legs -->
+    <path d="M96 186h64" stroke-width="12"/>
+    <path d="M128 186l-32 34" stroke-width="10"/>
+    <path d="M128 186l32 34" stroke-width="10"/>
+  </g>
+</svg>
