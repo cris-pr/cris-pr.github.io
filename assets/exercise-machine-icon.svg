@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="title desc">
+  <title id="title">Exercise machine</title>
+  <desc id="desc">Simple line icon showing a gym exercise machine with a frame, pulley, handles, weight stack, and seat.</desc>
+  <g fill="none" stroke="#222" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Main frame -->
+    <path d="M58 220V38h140v182" stroke-width="12"/>
+    <path d="M58 38h140" stroke-width="12"/>
+    <path d="M78 220h100" stroke-width="12"/>
+
+    <!-- Cable and pulley -->
+    <circle cx="128" cy="62" r="12" stroke-width="6"/>
+    <path d="M128 74v58" stroke-width="6"/>
+    <path d="M100 132h56" stroke-width="10"/>
+    <path d="M100 132l-18 24" stroke-width="8"/>
+    <path d="M156 132l18 24" stroke-width="8"/>
+    <path d="M82 156h-18" stroke-width="8"/>
+    <path d="M174 156h18" stroke-width="8"/>
+
+    <!-- Weight stack -->
+    <rect x="72" y="88" width="36" height="82" rx="8" stroke-width="8"/>
+    <path d="M78 112h24" stroke-width="6"/>
+    <path d="M78 134h24" stroke-width="6"/>
+    <path d="M78 156h24" stroke-width="6"/>
+
+    <!-- Seat and pad -->
+    <path d="M122 178h58" stroke-width="12"/>
+    <path d="M152 178v42" stroke-width="10"/>
+    <path d="M132 220h40" stroke-width="10"/>
+    <path d="M164 152l24 26" stroke-width="10"/>
+  </g>
+</svg>
